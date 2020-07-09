@@ -9,6 +9,8 @@ async function run(): Promise<void> {
       return
     }
 
+    core.debug('no cached tool, redownloading')
+
     switch(process.platform) {
       case 'win32': {
         const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/3tDrUv1NjAT/release-tool-1.14.0-windows-amd64.zip')
