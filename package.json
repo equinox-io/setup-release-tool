@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
+  "name": "equinox-install",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Build, package and distribute self-updating Go apps to your customers.",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,17 +15,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/equinox-io/install.git"
   },
   "keywords": [
     "actions",
-    "node",
+    "golang",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "equinox.io",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@actions/tool-cache": "^1.5.5"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",

@@ -1,16 +1,30 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as tc from '@actions/tool-cache'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    switch(process.platform) {
+      case 'win32': {
+        const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/3tDrUv1NjAT/release-tool-1.14.0-windows-amd64.zip')
+        const extPath = await tc.extractZip(downloadPath)
+        core.debug(extPath);
+        break;
+      }
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+      case 'darwin': {
+        const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/dsR9Yc3Uxrc/release-tool-1.14.0-darwin-amd64.zip')
+        const extPath = await tc.extractZip(downloadPath)
+        core.debug(extPath);
+        break;
+      }
 
-    core.setOutput('time', new Date().toTimeString())
+      default: {
+        const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz')
+        const extPath = await tc.extractTar(downloadPath)
+        core.debug(extPath);
+        break;
+      }
+    }
   } catch (error) {
     core.setFailed(error.message)
   }
