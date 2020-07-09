@@ -1415,12 +1415,15 @@ function run() {
                     core.addPath(cachedPath);
                     break;
                 }
-                default: {
+                case 'linux': {
                     const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz');
                     const extPath = yield tc.extractTar(downloadPath);
                     const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.addPath(cachedPath);
                     break;
+                }
+                default: {
+                    core.setFailed(`Unsupported platform: ${process.platform}`);
                 }
             }
         }

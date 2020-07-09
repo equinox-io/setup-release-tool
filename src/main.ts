@@ -26,12 +26,16 @@ async function run(): Promise<void> {
         break;
       }
 
-      default: {
+      case 'linux': {
         const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz')
         const extPath = await tc.extractTar(downloadPath)
         const cachedPath = await tc.cacheDir(extPath, 'equinox', '1.14.0')
         core.addPath(cachedPath)
         break;
+      }
+
+      default: {
+        core.setFailed(`Unsupported platform: ${process.platform}`)
       }
     }
   } catch (error) {
