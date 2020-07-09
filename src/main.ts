@@ -13,6 +13,7 @@ async function run(): Promise<void> {
 
       case 'darwin': {
         const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/dsR9Yc3Uxrc/release-tool-1.14.0-darwin-amd64.zip')
+        core.debug(downloadPath);
         const extPath = await tc.extractZip(downloadPath)
         core.debug(extPath);
         break;
@@ -20,6 +21,7 @@ async function run(): Promise<void> {
 
       default: {
         const downloadPath = await tc.downloadTool('https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz')
+        core.debug(downloadPath);
         const extPath = await tc.extractTar(downloadPath)
         core.debug(extPath);
         break;
