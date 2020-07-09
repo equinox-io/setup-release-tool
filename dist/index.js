@@ -1400,7 +1400,6 @@ function run() {
                 core.addPath(toolDir);
                 return;
             }
-            core.debug('no cached tool, redownloading');
             switch (process.platform) {
                 case 'win32': {
                     const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/3tDrUv1NjAT/release-tool-1.14.0-windows-amd64.zip');
