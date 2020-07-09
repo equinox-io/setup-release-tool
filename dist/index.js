@@ -1399,21 +1399,21 @@ function run() {
                 case 'win32': {
                     const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/3tDrUv1NjAT/release-tool-1.14.0-windows-amd64.zip');
                     const extPath = yield tc.extractZip(downloadPath);
-                    const cachedPath = yield tc.cacheFile(extPath, 'equinox', 'equinox', '1.14.0');
+                    const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.debug(cachedPath);
                     break;
                 }
                 case 'darwin': {
                     const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/dsR9Yc3Uxrc/release-tool-1.14.0-darwin-amd64.zip');
                     const extPath = yield tc.extractZip(downloadPath);
-                    const cachedPath = yield tc.cacheFile(extPath, 'equinox', 'equinox', '1.14.0');
+                    const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.debug(cachedPath);
                     break;
                 }
                 default: {
                     const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz');
                     const extPath = yield tc.extractTar(downloadPath);
-                    const cachedPath = yield tc.cacheFile(extPath, 'equinox', 'equinox', '1.14.0');
+                    const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.debug(cachedPath);
                     break;
                 }
