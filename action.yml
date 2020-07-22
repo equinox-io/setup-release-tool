@@ -1,6 +1,14 @@
 name: 'Install the Equinox release tool'
 description: "Build, package and distribute self-updating Go apps to your customers."
 author: 'equinox.io'
+inputs:
+  channel:
+    description: 'The channel to use when downloading the Equinox release tool. Either stable or beta.'
+    default: 'stable'
+    required: false
+branding:
+  icon: 'terminal'
+  color: 'purple'
 runs:
   using: 'node12'
   main: 'dist/index.js'

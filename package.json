@@ -1,5 +1,5 @@
 {
-  "name": "equinox-setup",
+  "name": "action-setup-release-tool",
   "version": "0.0.0",
   "private": true,
   "description": "Build, package and distribute self-updating Go apps to your customers.",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/equinox-io/setup.git"
+    "url": "git+https://github.com/equinox-io/action-setup-release-tool"
   },
   "keywords": [
     "actions",

@@ -1400,23 +1400,43 @@ function run() {
                 core.addPath(toolDir);
                 return;
             }
+            const channel = core.getInput('channel');
+            if (!['stable', 'beta', ''].includes(channel)) {
+                core.setFailed(`Unknown release channel ${channel}`);
+                return;
+            }
             switch (process.platform) {
                 case 'win32': {
-                    const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/3tDrUv1NjAT/release-tool-1.14.0-windows-amd64.zip');
+                    let toolUrl = 'https://bin.equinox.io/a/3tDrUv1NjAT/release-tool-1.14.0-windows-amd64.zip';
+                    if (channel === 'beta') {
+                        toolUrl =
+                            'https://bin.equinox.io/a/ihPCmxfgCRn/release-tool-1.11.0-windows-amd64.zip';
+                    }
+                    const downloadPath = yield tc.downloadTool(toolUrl);
                     const extPath = yield tc.extractZip(downloadPath);
                     const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.addPath(cachedPath);
                     break;
                 }
                 case 'darwin': {
-                    const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/dsR9Yc3Uxrc/release-tool-1.14.0-darwin-amd64.zip');
+                    let toolUrl = 'https://bin.equinox.io/a/dsR9Yc3Uxrc/release-tool-1.14.0-darwin-amd64.zip';
+                    if (channel === 'beta') {
+                        toolUrl =
+                            'https://bin.equinox.io/a/mQkEFPVp73u/release-tool-1.11.0-darwin-amd64.zip';
+                    }
+                    const downloadPath = yield tc.downloadTool(toolUrl);
                     const extPath = yield tc.extractZip(downloadPath);
                     const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.addPath(cachedPath);
                     break;
                 }
                 case 'linux': {
-                    const downloadPath = yield tc.downloadTool('https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz');
+                    let toolUrl = 'https://bin.equinox.io/a/hFqBgoEANbs/release-tool-1.14.0-linux-amd64.tar.gz';
+                    if (channel === 'beta') {
+                        toolUrl =
+                            'https://bin.equinox.io/a/2F6Hftj7dsf/release-tool-1.11.0-linux-amd64.tar.gz';
+                    }
+                    const downloadPath = yield tc.downloadTool(toolUrl);
                     const extPath = yield tc.extractTar(downloadPath);
                     const cachedPath = yield tc.cacheDir(extPath, 'equinox', '1.14.0');
                     core.addPath(cachedPath);

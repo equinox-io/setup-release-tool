@@ -3,7 +3,7 @@ import * as cp from 'child_process'
 import * as path from 'path'
 
 test('throws invalid number', async () => {
-  expect(1 / 0).toBe(Infinity);
+  expect(1 / 0).toBe(Infinity)
 })
 
 // test('wait 500 ms', async () => {
@@ -13,7 +13,7 @@ test('throws invalid number', async () => {
 //   var delta = Math.abs(end.getTime() - start.getTime())
 //   expect(delta).toBeGreaterThan(450)
 // })
-// 
+//
 // // shows how the runner will run a javascript action with env / stdout protocol
 // test('test runs', () => {
 //   process.env['INPUT_MILLISECONDS'] = '500'
