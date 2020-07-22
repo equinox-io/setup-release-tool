@@ -1,6 +1,6 @@
 {
-  "name": "action-setup-release-tool",
-  "version": "0.0.0",
+  "name": "setup-release-tool",
+  "version": "1.0.0",
   "private": true,
   "description": "Build, package and distribute self-updating Go apps to your customers.",
   "main": "lib/main.js",
